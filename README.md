@@ -20,10 +20,15 @@ docker run --rm exfi:1.5.6 build_splice_graph --help
 docker run -it --rm exfi:1.5.6
 ```
 
-Don't forget to mount your folder inside!
+Don't forget to mount your folder inside and use the correct user permissions!
 
 ```sh
-docker run --rm exfi:1.5.6 -v $PWD:$PWD build_splice_graph --help
+docker run \
+    --rm \
+    --volume $PWD:$PWD \
+    --user "$UID:$GID" \
+    exfi:1.5.6  \
+    build_splice_graph --help
 ```
 
 # Contact info
